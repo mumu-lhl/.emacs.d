@@ -1,0 +1,6 @@
+tree-sitter/
+var/
+etc/
+*.elc
+custom.el
+codeium/

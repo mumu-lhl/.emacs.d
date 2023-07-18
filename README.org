@@ -1,0 +1,6 @@
+** .emacs.d
+***  Install
+
+#+begin_src sh
+  git clone https://github.com/mumulhl/.emacs.d.git --depth 1
+#+end_src

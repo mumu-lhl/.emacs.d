@@ -1,0 +1,234 @@
+[submodule "site-lisp/extensions/lsp-bridge"]
+path = site-lisp/extensions/lsp-bridge
+url = https://github.com/manateelazycat/lsp-bridge
+
+[submodule "site-lisp/extensions/insert-translated-name"]
+path = site-lisp/extensions/insert-translated-name
+url = https://github.com/manateelazycat/insert-translated-name
+
+[submodule "site-lisp/extensions/awesome-tray"]
+path = site-lisp/extensions/awesome-tray
+url = https://github.com/manateelazycat/awesome-tray
+
+[submodule "site-lisp/extensions/emacs-application-framework"]
+path = site-lisp/extensions/emacs-application-framework
+url = https://github.com/emacs-eaf/emacs-application-framework
+
+[submodule "site-lisp/extensions/popweb"]
+path = site-lisp/extensions/popweb
+url = https://github.com/manateelazycat/popweb
+
+[submodule "site-lisp/extensions/auto-save"]
+path = site-lisp/extensions/auto-save
+url = https://github.com/manateelazycat/auto-save
+
+[submodule "site-lisp/extensions/sort-tab"]
+path = site-lisp/extensions/sort-tab
+url = https://github.com/manateelazycat/sort-tab
+
+[submodule "site-lisp/extensions/color-rg"]
+path = site-lisp/extensions/color-rg
+url = https://github.com/manateelazycat/color-rg
+
+[submodule "site-lisp/extensions/blink-search"]
+path = site-lisp/extensions/blink-search
+url = https://github.com/manateelazycat/blink-search
+
+[submodule "site-lisp/extensions/deno-bridge"]
+path = site-lisp/extensions/deno-bridge
+url = https://github.com/manateelazycat/deno-bridge
+
+[submodule "site-lisp/extensions/find-orphan"]
+path = site-lisp/extensions/find-orphan
+url = https://github.com/manateelazycat/find-orphan
+
+[submodule "site-lisp/extensions/lazycat-theme"]
+path = site-lisp/extensions/lazycat-theme
+url = https://github.com/manateelazycat/lazycat-theme
+
+[submodule "site-lisp/extensions/websocket-bridge"]
+path = site-lisp/extensions/websocket-bridge
+url = https://github.com/ginqi7/websocket-bridge
+
+[submodule "site-lisp/extensions/orderless"]
+path = site-lisp/extensions/orderless
+url = https://github.com/oantolin/orderless
+
+[submodule "site-lisp/extensions/emacs-async-await"]
+path = site-lisp/extensions/emacs-async-await
+url = https://github.com/chuntaro/emacs-async-await
+
+[submodule "site-lisp/extensions/f.el"]
+path = site-lisp/extensions/f.el
+url = https://github.com/rejeep/f.el
+
+[submodule "site-lisp/extensions/spdx.el"]
+path = site-lisp/extensions/spdx.el
+url = https://github.com/condy0919/spdx.el
+
+[submodule "site-lisp/extensions/emacs-promise"]
+path = site-lisp/extensions/emacs-promise
+url = https://github.com/chuntaro/emacs-promise
+
+[submodule "site-lisp/extensions/dash.el"]
+path = site-lisp/extensions/dash.el
+url = https://github.com/magnars/dash.el
+
+[submodule "site-lisp/extensions/dictionary-overlay"]
+path = site-lisp/extensions/dictionary-overlay
+url = https://github.com/ginqi7/dictionary-overlay
+
+[submodule "site-lisp/extensions/helpful"]
+path = site-lisp/extensions/helpful
+url = https://github.com/Wilfred/helpful
+
+[submodule "site-lisp/extensions/iter2"]
+path = site-lisp/extensions/iter2
+url = https://github.com/doublep/iter2
+
+[submodule "site-lisp/extensions/vundo"]
+path = site-lisp/extensions/vundo
+url = https://github.com/casouri/vundo
+
+[submodule "site-lisp/extensions/s.el"]
+path = site-lisp/extensions/s.el
+url = https://github.com/magnars/s.el
+
+[submodule "site-lisp/extensions/toggle-one-window"]
+path = site-lisp/extensions/toggle-one-window
+url = https://github.com/manateelazycat/toggle-one-window
+
+[submodule "site-lisp/extensions/elisp-refs"]
+path = site-lisp/extensions/elisp-refs
+url = https://github.com/Wilfred/elisp-refs
+
+[submodule "site-lisp/extensions/emacs-rime"]
+path = site-lisp/extensions/emacs-rime
+url = https://github.com/DogLooksGood/emacs-rime
+
+[submodule "site-lisp/extensions/meow"]
+path = site-lisp/extensions/meow
+url = https://github.com/meow-edit/meow
+
+[submodule "site-lisp/extensions/olivetti"]
+path = site-lisp/extensions/olivetti
+url = https://github.com/rnkn/olivetti
+
+[submodule "site-lisp/extensions/no-littering"]
+path = site-lisp/extensions/no-littering
+url = https://github.com/emacscollective/no-littering
+
+[submodule "site-lisp/extensions/org-appear"]
+path = site-lisp/extensions/org-appear
+url = https://github.com/awth13/org-appear
+
+[submodule "site-lisp/extensions/org-modern"]
+path = site-lisp/extensions/org-modern
+url = https://github.com/minad/org-modern
+
+[submodule "site-lisp/extensions/rainbow-delimiters"]
+path = site-lisp/extensions/rainbow-delimiters
+url = https://github.com/Fanael/rainbow-delimiters
+
+[submodule "site-lisp/extensions/ripgrep.el"]
+path = site-lisp/extensions/ripgrep.el
+url = https://github.com/nlamirault/ripgrep.el
+
+[submodule "site-lisp/extensions/editorconfig-emacs"]
+path = site-lisp/extensions/editorconfig-emacs
+url = https://github.com/editorconfig/editorconfig-emacs
+
+[submodule "site-lisp/extensions/markdown-mode"]
+path = site-lisp/extensions/markdown-mode
+url = https://github.com/jrblevin/markdown-mode
+
+[submodule "site-lisp/extensions/lazy-load"]
+path = site-lisp/extensions/lazy-load
+url = https://github.com/manateelazycat/lazy-load
+
+[submodule "site-lisp/extensions/emacs-websocket"]
+path = site-lisp/extensions/emacs-websocket
+url = https://github.com/ahyatt/emacs-websocket
+
+[submodule "site-lisp/extensions/compat"]
+path = site-lisp/extensions/compat
+url = https://github.com/emacs-compat/compat
+
+[submodule "site-lisp/extensions/diff-hl"]
+path = site-lisp/extensions/diff-hl
+url = https://github.com/dgutov/diff-hl
+
+[submodule "site-lisp/extensions/typst-mode.el"]
+path = site-lisp/extensions/typst-mode.el
+url = https://github.com/Ziqi-Yang/typst-mode.el
+
+[submodule "site-lisp/extensions/polymode"]
+path = site-lisp/extensions/polymode
+url = https://github.com/polymode/polymode
+
+[submodule "site-lisp/extensions/yasnippet"]
+path = site-lisp/extensions/yasnippet
+url = https://github.com/joaotavora/yasnippet
+
+[submodule "site-lisp/extensions/nerd-icons.el"]
+path = site-lisp/extensions/nerd-icons.el
+url = https://github.com/rainstormstudio/nerd-icons.el
+
+[submodule "site-lisp/extensions/emacs-elisp-autofmt"]
+path = site-lisp/extensions/emacs-elisp-autofmt
+url = https://codeberg.org/ideasman42/emacs-elisp-autofmt
+
+[submodule "site-lisp/extensions/lua-mode"]
+path = site-lisp/extensions/lua-mode
+url = https://github.com/immerrr/lua-mode
+
+[submodule "site-lisp/extensions/wraplish"]
+path = site-lisp/extensions/wraplish
+url = https://github.com/manateelazycat/wraplish
+
+[submodule "site-lisp/extensions/web-mode"]
+path = site-lisp/extensions/web-mode
+url = https://github.com/fxbois/web-mode
+
+[submodule "site-lisp/extensions/avy"]
+path = site-lisp/extensions/avy
+url = https://github.com/abo-abo/avy
+
+[submodule "site-lisp/extensions/symbol-overlay"]
+path = site-lisp/extensions/symbol-overlay
+url = https://github.com/wolray/symbol-overlay
+
+[submodule "site-lisp/extensions/fingertip"]
+path = site-lisp/extensions/fingertip
+url = https://github.com/manateelazycat/fingertip
+
+[submodule "site-lisp/extensions/recursive-search-references"]
+path = site-lisp/extensions/recursive-search-references
+url = https://github.com/manateelazycat/recursive-search-references
+
+[submodule "site-lisp/extensions/ligature.el"]
+path = site-lisp/extensions/ligature.el
+url = https://github.com/mickeynp/ligature.el
+
+[submodule "site-lisp/extensions/posframe"]
+path = site-lisp/extensions/posframe
+url = https://github.com/tumashu/posframe
+
+[submodule "site-lisp/extensions/gcmh"]
+path = site-lisp/extensions/gcmh
+url = https://gitlab.com/koral/gcmh.git/
+
+[submodule "site-lisp/extensions/deno-bridge-jieba"]
+path = site-lisp/extensions/deno-bridge-jieba
+url = https://github.com/ginqi7/deno-bridge-jieba
+
+[submodule "site-lisp/extensions/rainbow-identifiers"]
+path = site-lisp/extensions/rainbow-identifiers
+url = https://github.com/Fanael/rainbow-identifiers
+
+[submodule "site-lisp/extensions/emacs-gc-stats"]
+	path = site-lisp/extensions/emacs-gc-stats
+	url = https://git.sr.ht/~yantar92/emacs-gc-stats
+[submodule "site-lisp/extensions/valign"]
+	path = site-lisp/extensions/valign
+	url = https://github.com/casouri/valign
