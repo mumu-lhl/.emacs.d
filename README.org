@@ -3,4 +3,5 @@
 
 #+begin_src sh
   git clone https://github.com/mumulhl/.emacs.d.git --depth 1
+  git submodule update --init --recursive
 #+end_src

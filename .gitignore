@@ -3,4 +3,3 @@ var/
 etc/
 *.elc
 custom.el
-codeium/
