@@ -9,7 +9,7 @@
 
 (require 'diff-hl)
 
-(global-diff-hl-mode)
+(add-hook 'prog-mode-hook 'diff-hl-mode)
 
 (provide 'init-diff-hl)
 ;;; init-diff-hl.el ends here

@@ -92,11 +92,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (lazy-load-set-keys '((";" . execute-extended-command)) nil "C-c")
 
-;;;;;;;;;;;;
-;; Eshell ;;
-;;;;;;;;;;;;
-(lazy-load-global-keys '(("t e" . eshell)) "init-eshell" "C-c")
-
 ;;;;;;;;;;;
 ;; Error ;;
 ;;;;;;;;;;;

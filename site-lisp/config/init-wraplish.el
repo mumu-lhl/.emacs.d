@@ -11,7 +11,7 @@
 
 (setq wraplish-add-space-after-chinese-punctuation t)
 
-(dolist (hook '(markdown-mode-hook org-mode-hook))
+(dolist (hook '(markdown-mode-hook org-mode-hook text-mode-hook))
   (add-hook hook 'wraplish-mode))
 
 (provide 'init-wraplish)
