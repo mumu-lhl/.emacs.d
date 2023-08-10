@@ -12,7 +12,8 @@
            ("\\.lua$" . lua-mode)
            ("\\.vue$" . web-mode)
            ("\\.html?$" . web-mode)
-           ("\\.ya?ml\\'" . yaml-ts-mode)))
+           ("\\.ya?ml\\'" . yaml-ts-mode)
+           ("\\.js[mx]?\\'" . js-ts-mode)))
   (push elt-cons auto-mode-alist))
 
 (setq major-mode-remap-alist

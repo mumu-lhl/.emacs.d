@@ -33,6 +33,9 @@
    '((":" . avy-goto-char-2) ("\"" . avy-goto-char))
    meow-normal-state-keymap
    "avy"))
+(with-eval-after-load 'init-w3m
+  (lazy-load-local-keys
+   '((":" . avy-goto-char-2) ("\"" . avy-goto-char)) w3m-mode-map "avy"))
 
 ;;;;;;;;;;;;
 ;; Buffer ;;
@@ -80,6 +83,7 @@
 (lazy-load-global-keys
  '(("e b" . eaf-open-browser)
    ("e g" . eaf-open-git)
+   ("e h" . eaf-git-show-history)
    ("e m" . my/open-music-player)
    ("e o" . eaf-open)
    ("e r" . eaf-open-rss-reader)
@@ -226,18 +230,6 @@
   (if fingertip-mode
       (fingertip-newline 1)
     (newline-and-indent)))
-(defun my/forward-word (n)
-  "Forward word."
-  (interactive "p")
-  (if (derived-mode-p 'org-mode)
-      (deno-bridge-jieba-forward-word)
-    (meow-next-word n)))
-(defun my/backward-word (n)
-  "Backward word."
-  (interactive "p")
-  (if (derived-mode-p 'org-mode)
-      (deno-bridge-jieba-backward-word)
-    (meow-back-word n)))
 
 (lazy-load-global-keys
  '(("/" . meow-keypad-describe-key)
@@ -273,12 +265,12 @@
      ("]" . meow-end-of-thing)
      ("a" . meow-append)
      ("A" . meow-open-below)
-     ("b" . my/backward-word)
+     ("b" . meow-back-word)
      ("B" . meow-back-symbol)
      ("c" . meow-change)
      ("d" . meow-delete)
      ("D" . meow-backward-delete)
-     ("e" . my/forward-word)
+     ("e" . meow-next-word)
      ("E" . meow-next-symbol)
      ("f" . meow-find)
      ("g" . meow-cancel-selection)
@@ -296,7 +288,6 @@
      ("m" . meow-join)
      ("n" . meow-search)
      ("N" . my/jump-out-pair-and-newline-or-backward-kill-word)
-     ("M" . my/kill-word)
      ("o" . meow-block)
      ("O" . meow-to-block)
      ("p" . meow-yank)
@@ -459,14 +450,8 @@
 (defun my/jump-out-pair-and-newline-or-backward-kill-word ()
   "Jump out pair and newline or backward kill word."
   (interactive)
-  (if (derived-mode-p 'org-mode)
-      (deno-bridge-jieba-backward-kill-word)
-    (fingertip-jump-out-pair-and-newline)
-    (meow-insert-mode)))
-(defun my/kill-word ()
-  "Kill word."
-  (interactive)
-  (deno-bridge-jieba-kill-word))
+  (fingertip-jump-out-pair-and-newline)
+  (meow-insert-mode))
 
 (lazy-load-set-keys '(("C-k" . my/kill) ("C-d" . my/forward-delete)))
 (lazy-load-set-keys '(("DEL" . my/backward-delete)))

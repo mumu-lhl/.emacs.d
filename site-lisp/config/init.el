@@ -10,12 +10,22 @@
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
+(global-subword-mode)
+
+;; 增加长行处理性能
+(setq bidi-inhibit-bpa t)
+(setq-default bidi-paragraph-direction 'left-to-right)
+
+;; 增加IO性能
+(setq process-adaptive-read-buffering nil)
+(setq read-process-output-max (* 1024 1024))
 
 (setq
  auto-save-default nil
  confirm-kill-processes nil
  frame-inhibit-implied-resize t
  inhibit-splash-screen t
+ inhibit-compacting-font-caches t
  inhibit-startup-message t
  initial-scratch-message ";; Happy hacking :)"
  make-backup-files nil
@@ -25,7 +35,12 @@
  package-enable-at-startup nil
  use-dialog-box nil
  load-prefer-newer t
- custom-file (locate-user-emacs-file "custom.el"))
+ custom-file (locate-user-emacs-file "custom.el")
+
+ scroll-step 1
+ scroll-conservatively 10000
+
+ ring-bell-function 'ignore)
 (setq-default
  fill-column 80
  cursor-in-non-selected-windows nil
@@ -37,6 +52,7 @@
 (global-visual-line-mode)
 (global-word-wrap-whitespace-mode)
 (blink-cursor-mode -1)
+
 (fset 'display-startup-echo-area-message 'ignore)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -67,11 +83,8 @@
   (require 'init-prog)
   (require 'init-treesit)
   (require 'init-savehist)
-  (require 'init-rainbow-delimiters)
   (require 'init-saveplace)
-  (require 'deno-bridge-jieba)
-  (require 'init-editorconfig)
-  (require 'init-emacs-gc-stats))
+  (require 'init-cns))
 
 (run-with-idle-timer
  1 nil
@@ -79,7 +92,6 @@
      (with-temp-message ""
        (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
        (autoload 'web-mode "web-mode" "Web mode" t)
-       (require 'dictionary-overlay)
        (require 'find-orphan)
        (require 'init-auto-save)
        (require 'init-autoinsert)

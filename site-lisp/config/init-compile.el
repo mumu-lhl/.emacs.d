@@ -62,8 +62,7 @@ SEARCH-DIR search dir."
                      '("."
                        ".."
                        "auto-save"
-                       "awesome-tray"
-                       "deno-bridge-jieba")))
+                       "awesome-tray")))
                 dirs))
         (compile-byte-elisp-files (expand-file-name dir extensions-dir))))))
 

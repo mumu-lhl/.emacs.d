@@ -8,7 +8,6 @@
 ;;; Code:
 
 (setq
- prettify-symbols-unprettify-at-point t
  show-paren-when-point-in-periphery t
  show-paren-when-point-inside-paren t)
 (setq-default
@@ -16,7 +15,6 @@
  indent-tabs-mode nil
  tab-width 4)
 
-(global-prettify-symbols-mode)
 (show-paren-mode)
 
 (add-hook 'prog-mode-hook 'display-line-numbers-mode)
