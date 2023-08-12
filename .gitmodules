@@ -222,3 +222,15 @@ url = https://github.com/Fanael/rainbow-identifiers
 path = site-lisp/extensions/valign
 url = https://github.com/casouri/valign
 
+[submodule "site-lisp/extensions/emacs-chinese-word-segmentation"]
+path = site-lisp/extensions/emacs-chinese-word-segmentation
+url = https://github.com/kanglmf/emacs-chinese-word-segmentation
+[submodule "site-lisp/extensions/key-echo"]
+	path = site-lisp/extensions/key-echo
+	url = https://github.com/manateelazycat/key-echo
+[submodule "site-lisp/extensions/holo-layer"]
+	path = site-lisp/extensions/holo-layer
+	url = https://github.com/manateelazycat/holo-layer
+[submodule "site-lisp/extensions/benchmark-init-el"]
+	path = site-lisp/extensions/benchmark-init-el
+	url = https://github.com/dholm/benchmark-init-el

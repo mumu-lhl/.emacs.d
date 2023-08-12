@@ -18,6 +18,11 @@
      (convert-standard-filename (locate-user-emacs-file "var/eln-cache/"))))
 
   (add-subdirs-to-load-path (locate-user-emacs-file "site-lisp"))
+
+  ;; (require 'benchmark-init-modes)
+  ;; (require 'benchmark-init)
+  ;; (benchmark-init/activate)
+
   (require 'init))
 
 (provide 'early-init)

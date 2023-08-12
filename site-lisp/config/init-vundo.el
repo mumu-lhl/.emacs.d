@@ -9,5 +9,7 @@
 
 (require 'vundo)
 
+(meow-define-keys 'normal '("u" . vundo) '("U" . undo-only))
+
 (provide 'init-vundo)
 ;;; init-vundo.el ends here

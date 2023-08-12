@@ -9,8 +9,17 @@
 
 (require 'rime)
 
-(setq default-input-method "rime"
-      rime-show-candidate 'posframe)
+(setq
+ default-input-method "rime"
+ rime-show-candidate 'posframe)
+
+(defun my/toggle-input-method ()
+  "Toggle input method."
+  (interactive)
+  (if current-input-method
+      (meow-normal-mode)
+    (meow-insert-mode))
+  (toggle-input-method))
 
 (add-to-list 'rime-translate-keybindings "C-`")
 

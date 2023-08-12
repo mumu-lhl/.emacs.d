@@ -51,6 +51,7 @@
 
 (global-visual-line-mode)
 (global-word-wrap-whitespace-mode)
+(kill-ring-deindent-mode)
 (blink-cursor-mode -1)
 
 (fset 'display-startup-echo-area-message 'ignore)
@@ -96,10 +97,12 @@
        (require 'init-auto-save)
        (require 'init-autoinsert)
        (require 'init-blog)
+       (require 'init-copyright)
        (require 'init-diff-hl)
        (require 'init-eaf)
        (require 'init-elisp)
        (require 'init-fingertip)
+       (require 'init-holo-layer)
        (require 'init-insert-translated-name)
        (require 'init-lsp-bridge)
        (require 'init-mode)
@@ -112,7 +115,9 @@
        (require 'init-typst)
        (require 'init-wraplish)
        (require 'init-yas)
-       (require 'recursive-search-references))))
+       (require 'init-vundo)
+       (require 'recursive-search-references)
+       (require 'init-key-echo))))
 
 (provide 'init)
 ;;; init.el ends here

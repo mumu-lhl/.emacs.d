@@ -13,7 +13,6 @@
  acm-enable-quick-access t
  acm-enable-yas nil
  acm-enable-tabnine nil
- acm-enable-codeium t
  acm-backend-codeium-accept t
  acm-backend-codeium-api-key-path
  (expand-file-name
@@ -30,6 +29,23 @@
             meow-insert-mode
             meow-emacs-mode
             (minibufferp))))
+
+(defun my/lsp-bridge-ret ()
+  "LSP Bridge return."
+  (interactive)
+  (if (minibufferp)
+      (exit-minibuffer)
+    (newline-and-indent)))
+
+(lazy-load-set-keys
+ '(("RET" . my/lsp-bridge-ret)
+   ("TAB" . indent-for-tab-command))
+ acm-mode-map)
+
+(lazy-load-set-keys
+ '(("h" . lsp-bridge-ref-jump-prev-file)
+   ("l" . lsp-bridge-ref-jump-next-file))
+ lsp-bridge-ref-mode-map)
 
 (global-lsp-bridge-mode)
 

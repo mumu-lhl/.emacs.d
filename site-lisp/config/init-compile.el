@@ -16,6 +16,23 @@
 (defun compile-byte-elisp-files (search-dir)
   "Compile elisp files.
 SEARCH-DIR search dir."
+  (defvar-local exclude-directory
+      '("."
+        ".."
+        "node_modules"
+        "__pycache__"
+        ".git"
+        ".github"
+        "css"
+        "js"
+        "dist"
+        "assets"
+        "img"
+        "screenshot"
+        "langserver"
+        "multiserver"
+        "test"
+        "tests"))
   (dolist (file
            (directory-files (file-name-as-directory search-dir) t "\\.el$"))
     (or (member
@@ -27,43 +44,21 @@ SEARCH-DIR search dir."
             #'(lambda (subdir)
                 (or (not
                      (file-directory-p (expand-file-name subdir search-dir)))
-                    (member
-                     subdir
-                     '("."
-                       ".."
-                       "node_modules"
-                       "__pycache__"
-                       ".git"
-                       ".github"
-                       "css"
-                       "js"
-                       "dist"
-                       "assets"
-                       "img"
-                       "screenshot"
-                       "langserver"
-                       "multiserver"
-                       "test"
-                       "tests"))))
+                    (member subdir exclude-directory)))
             (directory-files search-dir)))
     (compile-byte-elisp-files
      (concat (file-name-as-directory search-dir) subdir))))
 
 (defun compile-byte-all-submodules ()
   "Compile all byte submodules."
+  (defvar-local exclude-directory
+      '("." ".." "auto-save" "awesome-tray" "lsp-bridge"))
   (with-temp-message ""
     (let* ((extensions-dir (locate-user-emacs-file "site-lisp/extensions/"))
            (dirs (directory-files extensions-dir)))
       (dolist (dir
                (cl-remove-if
-                #'(lambda (subdir)
-                    (member
-                     subdir
-                     '("."
-                       ".."
-                       "auto-save"
-                       "awesome-tray")))
-                dirs))
+                #'(lambda (subdir) (member subdir exclude-directory)) dirs))
         (compile-byte-elisp-files (expand-file-name dir extensions-dir))))))
 
 (let ((gc-cons-threshold most-positive-fixnum)

@@ -33,9 +33,6 @@
    '((":" . avy-goto-char-2) ("\"" . avy-goto-char))
    meow-normal-state-keymap
    "avy"))
-(with-eval-after-load 'init-w3m
-  (lazy-load-local-keys
-   '((":" . avy-goto-char-2) ("\"" . avy-goto-char)) w3m-mode-map "avy"))
 
 ;;;;;;;;;;;;
 ;; Buffer ;;
@@ -52,11 +49,6 @@
  '(("s p" . color-rg-search-input)
    ("s f" . color-rg-search-input-in-current-file))
  "init-color-rg" "C-c")
-(with-eval-after-load 'init-color-rg
-  (lazy-load-local-keys
-   '(("h" . color-rg-jump-prev-file)
-     ("l" . color-rg-jump-next-file))
-   color-rg-mode-map "init-color-rg"))
 
 ;;;;;;;;;;;;;;
 ;; Bookmark ;;
@@ -96,36 +88,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (lazy-load-set-keys '((";" . execute-extended-command)) nil "C-c")
 
-;;;;;;;;;;;
-;; Error ;;
-;;;;;;;;;;;
-(defun my/next-error ()
-  "Next error."
-  (interactive)
-  (if (eq major-mode 'emacs-lisp-mode)
-      (flymake-goto-next-error)
-    (lsp-bridge-diagnostic-jump-next)))
-(defun my/prev-error ()
-  "Prev error."
-  (interactive)
-  (if (eq major-mode 'emacs-lisp-mode)
-      (flymake-goto-prev-error)
-    (lsp-bridge-diagnostic-jump-prev)))
-(defun my/show-buffer-diagnostics ()
-  "Show buffer diagnostics."
-  (interactive)
-  (if (eq major-mode 'emacs-lisp-mode)
-      (flymake-show-buffer-diagnostics)
-    (lsp-bridge-diagnostic-list)))
-
-(with-eval-after-load 'init-meow
-  (lazy-load-set-keys
-   '(("(" . my/prev-error)
-     (")" . my/next-error)
-     ("!" . my/show-buffer-diagnostics)
-     ("~" . flymake-show-project-diagnostics))
-   meow-normal-state-keymap))
-
 ;;;;;;;;;;;;
 ;; Format ;;
 ;;;;;;;;;;;;
@@ -155,178 +117,6 @@
    ("C-s-8" . sort-tab-close-current-tab))
  "init-sort-tab")
 
-;;;;;;;;;;
-;; Meow ;;
-;;;;;;;;;;
-(defun my/open-round ()
-  "Insert open round."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-open-round)
-    (insert "(")))
-(defun my/open-bracket ()
-  "Insert open bracket."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-open-bracket)
-    (insert "[")))
-(defun my/open-curly ()
-  "Insert open curly."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-open-curly)
-    (insert "{")))
-(defun my/close-round ()
-  "Insert open round."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-close-round)
-    (insert ")")))
-(defun my/close-bracket ()
-  "Insert open bracket."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-close-bracket)
-    (insert "]")))
-(defun my/close-curly ()
-  "Insert open curly."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-close-curly)
-    (insert "}")))
-(defun my/equal ()
-  "Insert equal."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-equal)
-    (insert "=")))
-(defun my/match-paren ()
-  "Insert match paren."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-match-paren 1)
-    (insert "%")))
-(defun my/double-quote ()
-  "Insert double quote."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-double-quote)
-    (insert "\"")))
-(defun my/single-quote ()
-  "Insert single quote."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-single-quote)
-    (insert "'")))
-(defun my/space ()
-  "Insert space."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-space 1)
-    (insert " ")))
-(defun my/newline ()
-  "Insert newline."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-newline 1)
-    (newline-and-indent)))
-
-(lazy-load-global-keys
- '(("/" . meow-keypad-describe-key)
-   ("?" . meow-cheatsheet)
-   ("1" . meow-digit-argument)
-   ("2" . meow-digit-argument)
-   ("3" . meow-digit-argument)
-   ("4" . meow-digit-argument)
-   ("5" . meow-digit-argument)
-   ("6" . meow-digit-argument)
-   ("7" . meow-digit-argument)
-   ("8" . meow-digit-argument)
-   ("9" . meow-digit-argument)
-   ("0" . meow-digit-argument))
- "init-meow" "C-c")
-(with-eval-after-load 'init-meow
-  (lazy-load-local-keys
-   '(("0" . meow-expand-0)
-     ("9" . meow-expand-9)
-     ("8" . meow-expand-8)
-     ("7" . meow-expand-7)
-     ("6" . meow-expand-6)
-     ("5" . meow-expand-5)
-     ("4" . meow-expand-4)
-     ("3" . meow-expand-3)
-     ("2" . meow-expand-2)
-     ("1" . meow-expand-1)
-     ("-" . negative-argument)
-     (";" . meow-reverse)
-     ("," . meow-inner-of-thing)
-     ("." . meow-bounds-of-thing)
-     ("[" . meow-beginning-of-thing)
-     ("]" . meow-end-of-thing)
-     ("a" . meow-append)
-     ("A" . meow-open-below)
-     ("b" . meow-back-word)
-     ("B" . meow-back-symbol)
-     ("c" . meow-change)
-     ("d" . meow-delete)
-     ("D" . meow-backward-delete)
-     ("e" . meow-next-word)
-     ("E" . meow-next-symbol)
-     ("f" . meow-find)
-     ("g" . meow-cancel-selection)
-     ("G" . meow-grab)
-     ("h" . meow-left)
-     ("H" . meow-left-expand)
-     ("i" . meow-insert)
-     ("I" . meow-open-above)
-     ("j" . meow-next)
-     ("J" . meow-next-expand)
-     ("k" . meow-prev)
-     ("K" . meow-prev-expand)
-     ("l" . meow-right)
-     ("L" . meow-right-expand)
-     ("m" . meow-join)
-     ("n" . meow-search)
-     ("N" . my/jump-out-pair-and-newline-or-backward-kill-word)
-     ("o" . meow-block)
-     ("O" . meow-to-block)
-     ("p" . meow-yank)
-     ("q" . meow-quit)
-     ("Q" . meow-goto-line)
-     ("r" . meow-replace)
-     ("R" . meow-swap-grab)
-     ("s" . meow-kill)
-     ("t" . meow-till)
-     ("v" . meow-visit)
-     ("w" . meow-mark-word)
-     ("W" . meow-mark-symbol)
-     ("x" . meow-line)
-     ("X" . meow-goto-line)
-     ("y" . meow-save)
-     ("Y" . meow-sync-grab)
-     ("z" . meow-pop-selection)
-     ("Z" . meow-pop-grab)
-     ("'" . repeat)
-     ("%" . my/match-paren)
-     ("RET" . my/newline)
-     ("<escape>" . ignore))
-   meow-normal-state-keymap "init-meow")
-  (lazy-load-set-keys
-   '(("(" . my/open-round)
-     ("[" . my/open-bracket)
-     ("{" . my/open-curly)
-     (")" . my/close-round)
-     ("]" . my/close-bracket)
-     ("}" . my/close-curly)
-     ("=" . my/equal)
-     ("%" . my/match-paren)
-     ("\"" . my/double-quote)
-     ("'" . my/single-quote)
-     ("SPC" . my/space))
-   meow-insert-state-keymap)
-  (lazy-load-local-keys
-   '(("j" . meow-next) ("k" . meow-prev)) meow-motion-state-keymap "init-meow"))
-
 ;;;;;;;;;;;;
 ;; Popweb ;;
 ;;;;;;;;;;;;
@@ -338,13 +128,6 @@
 ;;;;;;;;;;;;;;;;
 ;; LSP Bridge ;;
 ;;;;;;;;;;;;;;;;
-(defun my/lsp-bridge-ret ()
-  "LSP Bridge return."
-  (interactive)
-  (if (minibufferp)
-      (exit-minibuffer)
-    (newline-and-indent)))
-
 (lazy-load-global-keys
  '(("l D" . lsp-bridge-find-def-other-window)
    ("l I" . lsp-bridge-find-impl-other-window)
@@ -359,15 +142,6 @@
    ("l w" . lsp-bridge-popup-documentation)
    ("l z" . lsp-bridge-find-def-return))
  "init-lsp-bridge" "C-c")
-(with-eval-after-load 'init-lsp-bridge
-  (lazy-load-local-keys
-   '(("RET" . my/lsp-bridge-ret)
-     ("TAB" . indent-for-tab-command))
-   acm-mode-map "init-lsp-bridge")
-  (lazy-load-local-keys
-   '(("h" . lsp-bridge-ref-jump-prev-file)
-     ("l" . lsp-bridge-ref-jump-next-file))
-   lsp-bridge-ref-mode-map "init-lsp-bridge"))
 
 ;;;;;;;;;;;;
 ;; Window ;;
@@ -393,13 +167,6 @@
    ("v" . helpful-variable))
  "init-helpful" "C-h")
 (lazy-load-global-keys '(("q h" . helpful-kill-buffers)) "init-helpful" "C-c")
-
-;;;;;;;;;;;
-;; Undo ;;
-;;;;;;;;;;;
-(with-eval-after-load 'init-meow
-  (lazy-load-local-keys '(("u" . vundo)) meow-normal-state-keymap "init-vundo")
-  (lazy-load-set-keys '(("U" . undo-only)) meow-normal-state-keymap))
 
 ;;;;;;;;;
 ;; Org ;;

@@ -12,5 +12,10 @@
 (setq color-rg-search-ignore-rules
       "-g '!node_modules' -g '!dist' -g '!var' -g '!site-lisp'")
 
+(lazy-load-set-keys
+ '(("h" . color-rg-jump-prev-file)
+   ("l" . color-rg-jump-next-file))
+ color-rg-mode-map)
+
 (provide 'init-color-rg)
 ;;; init-color-rg.el ends here
