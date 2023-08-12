@@ -19,7 +19,8 @@
   (if current-input-method
       (meow-normal-mode)
     (meow-insert-mode))
-  (toggle-input-method))
+  (toggle-input-method)
+  (awesome-tray-update))
 
 (add-to-list 'rime-translate-keybindings "C-`")
 

@@ -13,8 +13,15 @@
 
 (defun key-echo-shift-to-switch-input-method (key)
   (interactive)
-  (when (string-equal key "Key.shift")
-    (my/toggle-input-method)))
+  (cond
+   ((and (string-equal key "Key.shift")
+         (not buffer-read-only)
+         (not (derived-mode-p 'eaf-mode)))
+    (my/toggle-input-method))
+   ((and (string-equal key "Key.alt")
+         (require 'blink-search nil t)
+         (not blink-search-start-buffer))
+    (blink-search))))
 
 (setq key-echo-single-key-trigger-func 'key-echo-shift-to-switch-input-method)
 
