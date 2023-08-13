@@ -17,16 +17,17 @@
  awesome-tray-location-info-bottom " B")
 (with-eval-after-load 'init-rime
   (setq awesome-tray-input-method-zh-style rime-title))
-(setq-default mode-line-format t)
 
-(add-hook
- 'after-init-hook
- #'(lambda ()
-     (setq awesome-tray-mode-line-active-color
-           (frame-parameter nil 'foreground-color))
-     (setq awesome-tray-mode-line-inactive-color
-           (frame-parameter nil 'background-color))
-     (awesome-tray-mode)))
+(awesome-tray-mode)
+
+;; (add-hook
+;;  'after-init-hook
+;;  #'(lambda ()
+;;      (setq awesome-tray-mode-line-active-color
+;;            (frame-parameter nil 'foreground-color))
+;;      (setq awesome-tray-mode-line-inactive-color
+;;            (frame-parameter nil 'background-color))
+;;      (awesome-tray-mode)))
 
 (provide 'init-awesome-tray)
 ;;; init-awesome-tray.el ends here

@@ -19,7 +19,7 @@
          (not (derived-mode-p 'eaf-mode)))
     (my/toggle-input-method))
    ((and (string-equal key "Key.alt")
-         (require 'blink-search nil t)
+         (require 'init-blink-search nil t)
          (not blink-search-start-buffer))
     (blink-search))))
 

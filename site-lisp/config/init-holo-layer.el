@@ -9,6 +9,12 @@
 
 (require 'holo-layer)
 
+(setq
+ holo-layer-enable-cursor-animation t
+ holo-layer-hide-mode-line t
+ holo-layer-show-place-info-p t
+ holo-layer-place-info-font-size 13)
+
 (holo-layer-enable)
 
 (provide 'init-holo-layer)

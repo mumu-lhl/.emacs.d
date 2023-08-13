@@ -75,7 +75,6 @@
   (when (file-exists-p custom-file)
     (load custom-file))
 
-  (require 'init-awesome-tray)
   (require 'init-desktop)
   (require 'init-key)
   (require 'init-minibuffer)
@@ -94,6 +93,7 @@
        (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
        (autoload 'web-mode "web-mode" "Web mode" t)
        (require 'find-orphan)
+       (require 'init-awesome-tray)
        (require 'init-auto-save)
        (require 'init-autoinsert)
        (require 'init-blog)

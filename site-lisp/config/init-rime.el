@@ -17,8 +17,11 @@
   "Toggle input method."
   (interactive)
   (if current-input-method
-      (meow-normal-mode)
-    (meow-insert-mode))
+      (progn
+        (meow-normal-mode)
+        (set-cursor-color "green"))
+    (meow-insert-mode)
+    (set-cursor-color "#cc2444"))
   (toggle-input-method)
   (awesome-tray-update))
 
