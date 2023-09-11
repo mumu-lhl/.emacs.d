@@ -5,6 +5,8 @@
 
 ;;; Commentary:
 
+;; https://github.com/manateelazycat/lazycat-emacs/blob/master/site-lisp/config/init-easy-nav.el
+
 ;;; Code:
 
 (require 'popweb)
