@@ -1,6 +1,6 @@
 ;;; init-treesit.el --- -*- lexical-binding: t -*-
 
-;; Copyright (C) 2023 by Mumulhl
+;; Copyright (C) 2023 by Mumulhl <mumulhl@duck.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
@@ -30,7 +30,8 @@
    (bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
    (toml . ("https://github.com/ikatyang/tree-sitter-toml"))
    (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-   (elisp . ("https://github.com/Wilfred/tree-sitter-elisp")))
+   (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
+   (c . ("https://github.com/tree-sitter/tree-sitter-c")))
  treesit-extra-load-path `(,(expand-file-name "treesit" no-littering-var-directory)))
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (treesit-parser-create 'elisp)))

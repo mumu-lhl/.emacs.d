@@ -11,9 +11,7 @@
  show-paren-when-point-in-periphery t
  show-paren-when-point-inside-paren t)
 (setq-default
- display-line-numbers-type 'relative
- indent-tabs-mode nil
- tab-width 4)
+ display-line-numbers-type 'relative)
 
 (defun my/next-error ()
   "Next error."

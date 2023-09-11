@@ -1,6 +1,6 @@
 ;;; init-rime.el --- -*- lexical-binding: t -*-
 
-;; Copyright (C) 2023 by Mumulhl
+;; Copyright (C) 2023 by Mumulhl <mumulhl@duck.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
@@ -13,19 +13,13 @@
  default-input-method "rime"
  rime-show-candidate 'posframe)
 
-(defun my/toggle-input-method ()
-  "Toggle input method."
-  (interactive)
-  (if current-input-method
-      (progn
-        (meow-normal-mode)
-        (set-cursor-color "green"))
-    (meow-insert-mode)
-    (set-cursor-color "#cc2444"))
-  (toggle-input-method)
-  (awesome-tray-update))
-
 (add-to-list 'rime-translate-keybindings "C-`")
+
+(lazy-load-set-keys
+ '(("M-o" . rime--backspace)
+   ("M-m" . rime--return)
+   ("M-h" . rime--escape))
+ rime-active-mode-map)
 
 (provide 'init-rime)
 ;;; init-rime.el ends here

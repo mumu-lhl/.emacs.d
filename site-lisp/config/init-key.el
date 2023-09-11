@@ -1,48 +1,35 @@
 ;;; init-key.el ---                                  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2023 by Mumulhl
+;; Copyright (C) 2023 by Mumulhl <mumulhl@duck.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
+
+;; https://github.com/manateelazycat/lazycat-emacs/blob/master/site-lisp/config/init-key.el
 
 ;;; Code:
 
 (require 'lazy-load)
 
 (lazy-load-unset-keys
- '("C-x C-f"
-   "C-z"
-   "C-q"
-   "s-T"
-   "s-W"
-   "s-z"
-   "M-h"
-   "C-x C-c"
-   "s-c"
-   "s-x"
-   "s-v"
-   "C-6"
-   "M-."
-   "M-,"))
+ '("C-x C-f" "C-z" "C-q" "s-T" "s-W" "s-z" "M-h" "C-x C-c"
+   "s-c" "s-x" "s-v" "C-6" "M-." "M-,"))
 
-;;;;;;;;;
-;; Avy ;;
-;;;;;;;;;
-(with-eval-after-load 'init-meow
-  (lazy-load-local-keys
-   '((":" . avy-goto-char-2) ("\"" . avy-goto-char))
-   meow-normal-state-keymap
-   "avy"))
+(lazy-load-global-keys '(("s-s" . blink-search)) "init-blink-search")
 
-;;;;;;;;;;;;
-;; Buffer ;;
-;;;;;;;;;;;;
+;; edit
+(lazy-load-set-keys '(("M-o" . backward-delete-char-untabify)))
+
+;; thing edit
+(lazy-load-global-keys '(("s-t" . one-key-menu-thing-edit)) "init-thing-edit")
+
+;; smex
+(lazy-load-set-keys '(("M-x" . smex+) ("<menu>" . smex+)))
+
+;; buffer
 (lazy-load-set-keys '(("b i" . ibuffer)) nil "C-c")
 
-;;;;;;;;;;;;
-;; Search ;;
-;;;;;;;;;;;;
-(lazy-load-global-keys '(("C-c s b" . blink-search)) "init-blink-search")
+;; search
 (lazy-load-set-keys
  '(("s i" . isearch-forward) ("s r" . isearch-backward)) nil "C-c")
 (lazy-load-global-keys
@@ -50,24 +37,13 @@
    ("s f" . color-rg-search-input-in-current-file))
  "init-color-rg" "C-c")
 
-;;;;;;;;;;;;;;
-;; Bookmark ;;
-;;;;;;;;;;;;;;
+;; bookmark
 (lazy-load-set-keys '(("b l" . list-bookmarks)) nil "C-c")
 
-;;;;;;;;;;;;;
-;; Desktop ;;
-;;;;;;;;;;;;;
+;; desktop
 (lazy-load-set-keys '(("f r" . desktop-read)) nil "C-c")
 
-;;;;;;;;;
-;; EAF ;;
-;;;;;;;;;
-(defun my/open-music-player ()
-  "Open EAF music player."
-  (interactive)
-  (eaf-open (expand-file-name "~/Music/no-voice") "music-player"))
-
+;; EAF
 (lazy-load-global-keys
  '(("M-1" . eaf-open-in-file-manager)
    ("M-2" . eaf-open-file-manager))
@@ -83,32 +59,7 @@
    ("t y" . eaf-open-ipython))
  "init-eaf" "C-c")
 
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Execute extended commands ;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(lazy-load-set-keys '((";" . execute-extended-command)) nil "C-c")
-
-;;;;;;;;;;;;
-;; Format ;;
-;;;;;;;;;;;;
-(defun my/format ()
-  "Format."
-  (interactive)
-  (if (eq major-mode 'emacs-lisp-mode)
-      (elisp-autofmt-buffer)
-    (lsp-bridge-code-format))
-  (message "Done."))
-(lazy-load-global-keys '(("f f" . my/format)) "" "C-c")
-
-;;;;;;;;;;;
-;; Theme ;;
-;;;;;;;;;;;
-(with-eval-after-load 'init-crazy-theme
-  (lazy-load-set-keys '(("t r" . reload-crazy-theme)) nil "C-c"))
-
-;;;;;;;;;;;;;;
-;; Sort tab ;;
-;;;;;;;;;;;;;;
+;; Sort tab
 (lazy-load-global-keys
  '(("C-s-2" . sort-tab-select-next-tab)
    ("C-s-1" . sort-tab-select-prev-tab)
@@ -117,114 +68,147 @@
    ("C-s-8" . sort-tab-close-current-tab))
  "init-sort-tab")
 
-;;;;;;;;;;;;
-;; Popweb ;;
-;;;;;;;;;;;;
+;; LSP Bridge
 (lazy-load-global-keys
- '(("t p" . popweb-dict-bing-pointer)
-   ("t i" . popweb-dict-bing-input))
- "init-popweb" "C-c")
+ '(
+   ("C-7" . lsp-bridge-find-def-return)
+   ("C-8" . lsp-bridge-find-def)
+   ("M-," . lsp-bridge-code-action)
+   ("M-." . lsp-bridge-find-references)
+   ("C-9" . lsp-bridge-popup-documentation)
+   ("C-0" . lsp-bridge-rename)
+   ("C-!" . lsp-bridge-diagnostic-list)
+   ("M-s-j" . lsp-bridge-popup-documentation-scroll-up)   ;向下滚动文档
+   ("M-s-k" . lsp-bridge-popup-documentation-scroll-down) ;向上滚动文档
+   )
+ "init-lsp-bridge")
 
-;;;;;;;;;;;;;;;;
-;; LSP Bridge ;;
-;;;;;;;;;;;;;;;;
-(lazy-load-global-keys
- '(("l D" . lsp-bridge-find-def-other-window)
-   ("l I" . lsp-bridge-find-impl-other-window)
-   ("l T" . lsp-bridge-find-type-def-other-window)
-   ("l a" . lsp-bridge-code-action)
-   ("l d" . lsp-bridge-find-def)
-   ("l f" . lsp-bridge-find-references)
-   ("l i" . lsp-bridge-find-impl)
-   ("l r" . lsp-bridge-rename)
-   ("l s" . lsp-bridge-workspace-list-symbols)
-   ("l t" . lsp-bridge-find-type-def)
-   ("l w" . lsp-bridge-popup-documentation)
-   ("l z" . lsp-bridge-find-def-return))
- "init-lsp-bridge" "C-c")
-
-;;;;;;;;;;;;
-;; Window ;;
-;;;;;;;;;;;;
+;; window
 (lazy-load-set-keys
- '(("C-s-5" . other-window)
-   ("C-s-q" . quit-window)
-   ("C-s-y" . toggle-one-window)))
+ '(("C-s-5" . holo-layer-jump-to-window)
+   ("C-s-y" . toggle-one-window)
+   ("C-x ;" . delete-other-windows)
+   ("s-q" . delete-window)))
 
-;;;;;;;;;;
-;; Quit ;;
-;;;;;;;;;;
+;; Quit
 (lazy-load-set-keys '(("q q" . kill-emacs) ("q r" . restart-emacs)) nil "C-c")
 
-;;;;;;;;;;
-;; Help ;;
-;;;;;;;;;;
-(lazy-load-global-keys
- '(("C-f" . helpful-function)
-   ("C-m" . helpful-macro)
-   ("C-s" . helpful-symbol)
-   ("k" . helpful-key)
-   ("v" . helpful-variable))
- "init-helpful" "C-h")
-(lazy-load-global-keys '(("q h" . helpful-kill-buffers)) "init-helpful" "C-c")
-
-;;;;;;;;;
-;; Org ;;
-;;;;;;;;;
+;; Org
 (lazy-load-set-keys '(("o c" . org-capture)) nil "C-c")
 
-;;;;;;;;;;;;;;;
-;; Icomplete ;;
-;;;;;;;;;;;;;;;
-(with-eval-after-load 'icomplete
-  (lazy-load-set-keys
-   '(("C-n" . icomplete-forward-completions)
-     ("C-p" . icomplete-backward-completions))
-   icomplete-fido-mode-map))
-
-;;;;;;;;;;;;;
-;; Webjump ;;
-;;;;;;;;;;;;;
+;; Webjump
 (lazy-load-global-keys '(("C-c w j" . webjump)) "init-webjump")
 
-;;;;;;;;;;;;;;;;;;;;
-;; Symbol Overlay ;;
-;;;;;;;;;;;;;;;;;;;;
+;; symbol overlay
+(lazy-load-global-keys '(("M-s" . symbol-overlay-put)) "symbol-overlay")
+
+;; delete block
 (lazy-load-global-keys
- '(("C-c s o" . symbol-overlay-put)) "init-symbol-overlay")
+ '(("M-N" . delete-block-forward)
+   ("M-P" . delete-block-backward))
+ "delete-block")
 
-;;;;;;;;;;;;;;;
-;; Fingertip ;;
-;;;;;;;;;;;;;;;
-(defun my/kill ()
-  "Kill."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-kill)
-    (kill-line)))
-(defun my/backward-delete ()
-  "Backward delete."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-backward-delete)
-    (backward-delete-char-untabify 1)))
-(defun my/forward-delete ()
-  "Forward delete."
-  (interactive)
-  (if fingertip-mode
-      (fingertip-forward-delete)
-    (backward-delete-char-untabify -1)))
-(defun my/jump-out-pair-and-newline-or-backward-kill-word ()
-  "Jump out pair and newline or backward kill word."
-  (interactive)
-  (fingertip-jump-out-pair-and-newline)
-  (meow-insert-mode))
+;; undo
+(lazy-load-global-keys '(("s-u" . vundo)) "vundo")
 
-(lazy-load-set-keys '(("C-k" . my/kill) ("C-d" . my/forward-delete)))
-(lazy-load-set-keys '(("DEL" . my/backward-delete)))
-(lazy-load-set-keys '(("DEL" . my/backward-delete)) lisp-mode-shared-map)
-(with-eval-after-load 'python
-  (lazy-load-set-keys '(("DEL" . my/backward-delete)) python-ts-mode-map))
+;; move
+(lazy-load-set-keys
+ '(
+   ("C-z k" . beginning-of-buffer)      ;缓存开始
+   ("C-z j" . end-of-buffer)            ;缓存结尾
+   ))
+(lazy-load-global-keys
+ '(("s-P" . move-text-up)
+   ("s-N" . move-text-down))
+ "move-text")
+(lazy-load-global-keys
+ '(("s-K" . duplicate-line-or-region-above)
+   ("s-J" . duplicate-line-or-region-below)
+   ("C-s-k" . duplicate-line-above-comment)
+   ("C-s-j" . duplicate-line-below-comment)
+   ("C-;" . comment-or-uncomment-region+))
+ "duplicate-line")
+(lazy-load-global-keys
+ '(("C-o" . open-newline-below)
+   ("s-o" . open-newline-above))
+ "open-newline")
+
+;; goto line
+(lazy-load-global-keys '(("M-g" . goto-line-preview)) "goto-line-preview")
+
+;; effortless indent
+(lazy-load-global-keys
+ '(("C-s-r" . effortless-indent-right)
+   ("C-s-e" . effortless-indent-left))
+ "effortless-indent")
+
+;; basic toolkit
+(lazy-load-global-keys
+ '(("M-s-n" . comment-part-move-down)
+   ("M-s-p" . comment-part-move-up)
+   ("C-s-n" . comment-dwim-next-line)
+   ("C-s-p" . comment-dwim-prev-line)
+   ("C-2" . indent-buffer)
+   ("C-x u" . mark-line)
+   ("C-," . remember-init)
+   ("C-." . remember-jump)
+   ("s-j" . scroll-up-line)
+   ("s-k" . scroll-down-line)
+   ("<f2>" . refresh-file)
+   ("s-f" . find-file-root))
+ "basic-toolkit")
+
+;; help
+(lazy-load-global-keys
+ '(("f" . helpful-function)
+   ("v" . helpful-variable)
+   ("m" . helpful-macro)
+   ("M" . describe-mode)
+   ("k" . helpful-key))
+ "init-helpful"
+ "C-h")
+
+;; watch other window
+(lazy-load-global-keys
+ '(("M-J" . watch-other-window-up)
+   ("M-K" . watch-other-window-down)
+   ("M-<" . watch-other-window-up-line)
+   ("M->" . watch-other-window-down-line))
+ "watch-other-window")
+
+;; mark macro
+(lazy-load-global-keys
+ '(
+   ("s-h" . one-key-menu-mark-macro)     ;one-key菜单
+   ("s-M" . markmacro-rect-set)          ;记录矩形编辑开始的位置
+   ("s-D" . markmacro-rect-delete)       ;删除矩形区域
+   ("s-F" . markmacro-rect-replace)      ;替换矩形区域的内容
+   ("s-I" . markmacro-rect-insert)       ;在矩形区域前插入字符串
+   ("s-C" . markmacro-rect-mark-columns) ;转换矩形列为标记对象
+   ("s-S" . markmacro-rect-mark-symbols) ;转换矩形列对应的符号为标记对象
+   ("s-<" . markmacro-apply-all)         ;应用键盘宏到所有标记对象
+   ("s->" . markmacro-apply-all-except-first) ;应用键盘宏到所有标记对象, 除了第一个， 比如下划线转换的时候
+   )
+ "init-markmacro")
+
+;; buffer
+(lazy-load-set-keys
+ '(
+   ("s-," . bury-buffer)                ;隐藏当前buffer
+   ("s-." . unbury-buffer)              ;反隐藏当前buffer
+   ("s-[" . eval-expression)            ;执行表达式
+   ("C-s-q" . quoted-insert)            ;读取系一个输入字符并插入
+   ))
+(lazy-load-global-keys '(("s-R" . re-builder)) "init-rebuilder")
+
+;; goto-last-change
+(lazy-load-global-keys '(("C-'" . goto-last-change)) "goto-last-change")
+
+;; English Helper
+(lazy-load-global-keys '(("M-r" . lsp-bridge-toggle-sdcv-helper)) "init-lsp-bridge")
+
+;; woman
+(lazy-load-set-keys '(("<f1>" . woman)))
 
 (provide 'init-key)
-;;; init-key.el ends here
+;; init-key.el ends here

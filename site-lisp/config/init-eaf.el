@@ -1,6 +1,6 @@
 ;;; init-eaf.el ---                                  -*- lexical-binding: t -*-
 
-;; Copyright (C) 2023 by Mumulhl
+;; Copyright (C) 2023 by Mumulhl <mumulhl@duck.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
@@ -23,6 +23,16 @@
 (defalias 'browse-web #'eaf-open-browser)
 
 (eaf-bind-key clear_focus "<escape>" eaf-browser-keybinding)
+(eaf-bind-key eaf-send-backspace-key "M-o" eaf-browser-keybinding)
+(eaf-bind-key eaf-send-alt-backspace-key "C-M-o" eaf-browser-keybinding)
+
+(eaf-bind-key eaf-send-backspace-key "M-o" eaf-pyqterminal-keybinding)
+(eaf-bind-key eaf-send-alt-backspace-sequence "C-M-o" eaf-pyqterminal-keybinding)
+
+(defun my/open-music-player ()
+  "Open EAF music player."
+  (interactive)
+  (eaf-open (expand-file-name "~/Music/no-voice") "music-player"))
 
 (setq
  browse-url-browser-function 'eaf-open-browser
@@ -34,18 +44,17 @@
  eaf-browser-default-search-engine "duckduckgo"
 
  eaf-webengine-download-path (expand-file-name "~/Downloads")
- eaf-webengine-font-family "FiraCode Nerd Font"
+ eaf-webengine-font-family "Fira Code"
  eaf-webengine-font-size 18
- eaf-webengine-fixed-font-family "FiraCode Nerd Font"
+ eaf-webengine-fixed-font-family "Fira Code"
  eaf-webengine-fixed-font-size 18
- eaf-webengine-pc-user-agent "Mozilla/5.0 (Windows NT 10.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36"
 
  eaf-music-extension-list '("mp3" "opus")
  eaf-music-play-order "random"
 
  eaf-pdf-dark-mode "force"
 
- eaf-pyqterminal-font-family "FiraCode Nerd Font"
+ eaf-pyqterminal-font-family "Fira Code"
  eaf-pyqterminal-font-size 18
  eaf-pyqterminal-cursor-type "hbar"
  eaf-pyqterminal-cursor-size 2

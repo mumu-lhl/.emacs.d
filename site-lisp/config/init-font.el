@@ -8,7 +8,7 @@
 ;;; Code:
 
 (defun load-font-setup ()
-  (set-face-attribute 'default nil :height 130 :family "FiraCode Nerd Font"))
+  (set-face-attribute 'default nil :height 130 :family "Fira Code"))
 
 (load-font-setup)
 

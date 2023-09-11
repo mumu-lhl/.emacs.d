@@ -13,7 +13,9 @@
            ("\\.vue$" . web-mode)
            ("\\.html?$" . web-mode)
            ("\\.ya?ml\\'" . yaml-ts-mode)
-           ("\\.js[mx]?\\'" . js-ts-mode)))
+           ("\\.js[mx]?\\'" . js-ts-mode)
+           ("\\.h\\'" . c-or-c++-ts-mode)
+           ("\\.c\\'" . c-ts-mode)))
   (push elt-cons auto-mode-alist))
 
 (setq major-mode-remap-alist
@@ -21,7 +23,9 @@
         (js-mode . js-ts-mode)
         (js-json-mode . json-ts-mode)
         (python-mode . python-ts-mode)
-        (css-mode . css-ts-mode)))
+        (css-mode . css-ts-mode)
+        (c-or-c++-mode . c-or-c++-ts-mode)
+        (c-mode . c-ts-mode)))
 
 (provide 'init-mode)
 ;;; init-mode.el ends here

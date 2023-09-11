@@ -10,12 +10,15 @@
 (require 'holo-layer)
 
 (setq
- holo-layer-enable-cursor-animation t
  holo-layer-hide-mode-line t
- holo-layer-show-place-info-p t
+ holo-layer-enable-place-info t
+ holo-layer-enable-window-border t
+ holo-layer-enable-smooth-cursor t
+ holo-layer-enable-cursor-animation t
+ holo-layer-cursor-animation-type "jelly easing"
  holo-layer-place-info-font-size 13)
 
-(holo-layer-enable)
+;; (holo-layer-enable)
 
 (provide 'init-holo-layer)
 ;;; init-holo-layer.el ends here

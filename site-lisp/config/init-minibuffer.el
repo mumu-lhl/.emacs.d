@@ -8,8 +8,16 @@
 ;;; Code:
 
 (require 'icomplete)
+(require 'smex)
 
 (fido-mode)
+(smex-initialize)
+
+;; https://github.com/manateelazycat/lazycat-emacs/blob/master/site-lisp/config/init-smex.el
+(defun smex+ ()
+  (interactive)
+  (let ((resize-mini-windows nil))
+    (smex)))
 
 (provide 'init-minibuffer)
 ;;; init-minibuffer.el ends here

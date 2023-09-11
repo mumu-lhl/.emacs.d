@@ -1,6 +1,6 @@
 ;;; init.el --- My emacs config                      -*- lexical-binding: t -*-
 
-;; Copyright (C) 2023 by Mumulhl
+;; Copyright (C) 2023 by Mumulhl <mumulhl@duck.com>
 ;; SPDX-License-Identifier: GPL-3.0-or-later
 
 ;;; Commentary:
@@ -11,6 +11,10 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-subword-mode)
+(global-visual-line-mode)
+(global-word-wrap-whitespace-mode)
+(kill-ring-deindent-mode)
+(blink-cursor-mode -1)
 
 ;; 增加长行处理性能
 (setq bidi-inhibit-bpa t)
@@ -49,11 +53,6 @@
  :emergency
  bidi-display-reordering nil)
 
-(global-visual-line-mode)
-(global-word-wrap-whitespace-mode)
-(kill-ring-deindent-mode)
-(blink-cursor-mode -1)
-
 (fset 'display-startup-echo-area-message 'ignore)
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -63,15 +62,24 @@
 (add-hook
  'after-init-hook
  #'(lambda ()
-     (require 'init-meow)
      (require 'init-font)
      (require 'init-sort-tab)
-     (require 'gcmh)
-
-     (toggle-frame-fullscreen)))
+     (require 'gcmh)))
 
 (with-temp-message ""
   (require 'no-littering)
+  (setq
+   blink-search-db-path
+   (expand-file-name "blink-search.db" no-littering-var-directory)
+   blink-search-history-path (expand-file-name "blink-search/history.txt" no-littering-var-directory)
+   blink-search-search-backends
+   '("Buffer List"
+     "Find File"
+     "Elisp Symbol"
+     "Recent File"
+     "IMenu"
+     "EAF Browser"))
+
   (when (file-exists-p custom-file)
     (load custom-file))
 
@@ -84,7 +92,8 @@
   (require 'init-treesit)
   (require 'init-savehist)
   (require 'init-saveplace)
-  (require 'init-cns))
+  (require 'init-cns)
+  (require 'init-cursor-chg))
 
 (run-with-idle-timer
  1 nil
@@ -93,6 +102,9 @@
        (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
        (autoload 'web-mode "web-mode" "Web mode" t)
        (require 'find-orphan)
+       (require 'toggle-one-window)
+       (require 'one-key)
+
        (require 'init-awesome-tray)
        (require 'init-auto-save)
        (require 'init-autoinsert)
@@ -110,14 +122,12 @@
        (require 'init-org)
        (require 'init-python)
        (require 'init-rime)
-       (require 'init-symbol-overlay)
-       (require 'init-toggle-one-window)
        (require 'init-typst)
        (require 'init-wraplish)
        (require 'init-yas)
-       (require 'init-vundo)
        (require 'recursive-search-references)
-       (require 'init-key-echo))))
+       (require 'init-info)
+       (require 'init-highlight-parentheses))))
 
 (provide 'init)
 ;;; init.el ends here
