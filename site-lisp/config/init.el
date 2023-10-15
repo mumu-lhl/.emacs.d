@@ -99,7 +99,6 @@
  1 nil
  #'(lambda ()
      (with-temp-message ""
-       (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
        (autoload 'web-mode "web-mode" "Web mode" t)
        (require 'find-orphan)
        (require 'toggle-one-window)
@@ -127,7 +126,8 @@
        (require 'init-yas)
        (require 'recursive-search-references)
        (require 'init-info)
-       (require 'init-highlight-parentheses))))
+       (require 'init-highlight-parentheses)
+       (require 'init-c))))
 
 (provide 'init)
 ;;; init.el ends here

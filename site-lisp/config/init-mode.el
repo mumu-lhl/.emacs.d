@@ -8,10 +8,10 @@
 ;;; Code:
 
 (dolist (elt-cons
-         '(("\\.rs$" . rust-ts-mode)
-           ("\\.lua$" . lua-mode)
-           ("\\.vue$" . web-mode)
-           ("\\.html?$" . web-mode)
+         '(("\\.rs\\'" . rust-ts-mode)
+           ("\\.lua\\'" . lua-ts-mode)
+           ("\\.vue\\'" . web-mode)
+           ("\\.html?\\'" . web-mode)
            ("\\.ya?ml\\'" . yaml-ts-mode)
            ("\\.js[mx]?\\'" . js-ts-mode)
            ("\\.h\\'" . c-or-c++-ts-mode)

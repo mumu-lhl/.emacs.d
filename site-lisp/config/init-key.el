@@ -49,15 +49,15 @@
    ("M-2" . eaf-open-file-manager))
  "init-eaf")
 (lazy-load-global-keys
- '(("e b" . eaf-open-browser)
-   ("e g" . eaf-open-git)
-   ("e h" . eaf-git-show-history)
-   ("e m" . my/open-music-player)
-   ("e o" . eaf-open)
-   ("e r" . eaf-open-rss-reader)
-   ("t t" . eaf-open-pyqterminal)
-   ("t y" . eaf-open-ipython))
- "init-eaf" "C-c")
+ '(("b" . eaf-open-browser)
+   ("g" . eaf-open-git)
+   ("h" . eaf-git-show-history)
+   ("m" . my/open-music-player)
+   ("o" . eaf-open)
+   ("r" . eaf-open-rss-reader)
+   ("t" . eaf-open-pyqterminal)
+   ("y" . eaf-open-ipython))
+ "init-eaf" "s-w")
 
 ;; Sort tab
 (lazy-load-global-keys
@@ -88,10 +88,10 @@
  '(("C-s-5" . holo-layer-jump-to-window)
    ("C-s-y" . toggle-one-window)
    ("C-x ;" . delete-other-windows)
-   ("s-q" . delete-window)))
+   ("C-s-q" . delete-window)))
 
 ;; Quit
-(lazy-load-set-keys '(("q q" . kill-emacs) ("q r" . restart-emacs)) nil "C-c")
+(lazy-load-set-keys '(("q" . kill-emacs) ("r" . restart-emacs)) nil "s-q")
 
 ;; Org
 (lazy-load-set-keys '(("o c" . org-capture)) nil "C-c")
@@ -113,14 +113,14 @@
 
 ;; move
 (lazy-load-set-keys
- '(
-   ("C-z k" . beginning-of-buffer)      ;缓存开始
+ '(("C-z k" . beginning-of-buffer)      ;缓存开始
    ("C-z j" . end-of-buffer)            ;缓存结尾
    ))
 (lazy-load-global-keys
  '(("s-P" . move-text-up)
    ("s-N" . move-text-down))
  "move-text")
+
 (lazy-load-global-keys
  '(("s-K" . duplicate-line-or-region-above)
    ("s-J" . duplicate-line-or-region-below)
@@ -209,6 +209,8 @@
 
 ;; woman
 (lazy-load-set-keys '(("<f1>" . woman)))
+
+(lazy-load-set-keys '(("C-M-y" . forward-paragraph) ("C-M-w" . backward-paragraph)) nil)
 
 (provide 'init-key)
 ;; init-key.el ends here

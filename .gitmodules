@@ -142,10 +142,6 @@ url = https://github.com/joaotavora/yasnippet
 path = site-lisp/extensions/nerd-icons.el
 url = https://github.com/rainstormstudio/nerd-icons.el
 
-[submodule "site-lisp/extensions/lua-mode"]
-path = site-lisp/extensions/lua-mode
-url = https://github.com/immerrr/lua-mode
-
 [submodule "site-lisp/extensions/wraplish"]
 path = site-lisp/extensions/wraplish
 url = https://github.com/manateelazycat/wraplish

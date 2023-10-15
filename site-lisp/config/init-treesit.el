@@ -31,7 +31,8 @@
    (toml . ("https://github.com/ikatyang/tree-sitter-toml"))
    (json . ("https://github.com/tree-sitter/tree-sitter-json"))
    (elisp . ("https://github.com/Wilfred/tree-sitter-elisp"))
-   (c . ("https://github.com/tree-sitter/tree-sitter-c")))
+   (c . ("https://github.com/tree-sitter/tree-sitter-c"))
+   (lua . ("https://github.com/Azganoth/tree-sitter-lua")))
  treesit-extra-load-path `(,(expand-file-name "treesit" no-littering-var-directory)))
 
 (add-hook 'emacs-lisp-mode-hook (lambda () (treesit-parser-create 'elisp)))

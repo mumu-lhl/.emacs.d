@@ -52,7 +52,7 @@ SEARCH-DIR search dir."
 (defun compile-byte-all-submodules ()
   "Compile all byte submodules."
   (defvar-local exclude-directory
-      '("." ".." "auto-save" "awesome-tray" "lsp-bridge"))
+      '("." ".." "auto-save" "awesome-tray"))
   (with-temp-message ""
     (let* ((extensions-dir (locate-user-emacs-file "site-lisp/extensions/"))
            (dirs (directory-files extensions-dir)))

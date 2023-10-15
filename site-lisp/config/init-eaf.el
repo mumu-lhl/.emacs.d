@@ -40,6 +40,8 @@
  eaf-config-location (expand-file-name "eaf/" no-littering-var-directory)
  eaf-rebuild-buffer-after-crash nil
 
+ eaf-find-file-ext-blacklist '("md" "org" "html" "htm")
+
  eaf-browser-continue-where-left-off t
  eaf-browser-default-search-engine "duckduckgo"
 
